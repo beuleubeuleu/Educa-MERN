@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const main = async () => {
-  await mongoose.connect('mongodb://localhost:27017/cDisPLON');
+export const main = async (mongoURI:string) => {
+  await mongoose.connect(mongoURI);
   console.log("Connected to MongoDB");
 }
