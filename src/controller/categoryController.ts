@@ -28,12 +28,12 @@ export const getAllCategories = async (req: Request, res: Response) => {
   try {
     const categories = await Categorie.find();
     if (!categories){
-      return res.status(500).json({ message: "La récupération des catégories à échoué" });
+      return res.status(500).json({ success:false, message: "La récupération des catégories à échoué" });
     }
-    res.status(200).json(categories);
+    res.status(200).json({ success:true, categories });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success:false, message: error.message });
   }
 }
 
