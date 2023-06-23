@@ -1,11 +1,12 @@
 import { Router }                                                                           from "express";
 import { createCategory, deleteCategory, getAllCategories, getOneCategory } from "../controller/categoryController"
+import upload                                                                               from "../middlewares/imgUpload";
 
 const categorieRouter = Router();
 
-categorieRouter.post("/", createCategory);
+categorieRouter.post("/",upload.single("image"), createCategory);
 categorieRouter.get("/", getAllCategories);
-categorieRouter.get("/:idCategory", getOneCategory);
-categorieRouter.delete("/delete/:idCategory", deleteCategory);
+categorieRouter.get("/:idCategorie", getOneCategory);
+categorieRouter.delete("/delete/:idCategorie", deleteCategory);
 
 export default categorieRouter;
