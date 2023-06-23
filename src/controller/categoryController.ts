@@ -1,5 +1,5 @@
-import {Request, Response} from "express";
-import Categorie           from "../models/categorie";
+import { Request, Response } from "express";
+import Categorie             from "../models/categorie";
 
 export const createCategory = async (req: Request, res: Response) => {
   try {
@@ -7,7 +7,7 @@ export const createCategory = async (req: Request, res: Response) => {
     const categorie = await Categorie.create({
       titre,
       imagePath: req.file.path.split("/").slice(2).join("/"), // stock le chemin de l'image dans la db
-      imageAlt: `Photo de base pour la catégorie: ${titre}`
+      imageAlt: `Photo de base pour la catégorie: ${ titre }`
     });
 
     if ( !categorie ) {
@@ -25,7 +25,16 @@ export const deleteCategory = async (req: Request, res: Response) => {
 }
 
 export const getAllCategories = async (req: Request, res: Response) => {
-//TODO: coder la fonction
+  try {
+    const categories = await Categorie.find();
+    if (!categories){
+      return res.status(500).json({ message: "La récupération des catégories à échoué" });
+    }
+    res.status(200).json(categories);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
 }
 
 export const getOneCategory = async (req: Request, res: Response) => {
