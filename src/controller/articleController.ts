@@ -52,7 +52,7 @@ export const deleteArticle = async (req: Request, res: Response) => {
 
 export const getAllArticles = async (req: Request, res: Response) => {
   try {
-    const articles = await Article.find();
+    const articles = await Article.find().populate("categorie");
     if (!articles){
       return res.status(500).json({ success:false, message: "La récupération des articles à échoué" });
     }
