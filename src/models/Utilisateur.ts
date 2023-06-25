@@ -5,7 +5,8 @@ const UtilisateurSchema = new Schema({
   prenom: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ["admin", "élève", "professeur"], required: true }
+  role: { type: String, enum: ["admin", "élève", "professeur"], required: true },
+  statut: { type: String, enum: ["ok", "en attente de confirmation"], required: true }
 });
 
 // Create and export the model

@@ -5,7 +5,8 @@ import Article               from "../models/Article";
 
 export const createArticle = async (req: Request, res: Response) => {
   try {
-    const { titre, contenu, auteur, imageAlt, estBrouillon, description } = req.body
+    const { titre, contenu, imageAlt, description } = req.body
+    let {estBrouillon} = req.body
     if ( req.file && !imageAlt ) {
       res.status(400).send({
         success: false,
@@ -17,9 +18,13 @@ export const createArticle = async (req: Request, res: Response) => {
     const categorie = await Categorie.findById(req.body.categorie)
     const imagePath = req.file?req.file.path.split("/").slice(2).join("/"): categorie.imagePath
 
+    if (req.user.statut != "ok") {
+      estBrouillon = true
+    }
+
     const nouvelArticle = {
       titre,
-      auteur,
+      auteur: req.user._id,
       contenu,
       dateCreation: Date.now(),
       estBrouillon,

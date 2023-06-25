@@ -9,16 +9,16 @@ import {
   loginUser
 }                  from "../controller/userController";
 
-const usersRouter = Router();
+const utilisateurRouter = Router();
 
-usersRouter.post("/register", registerUser);
-usersRouter.post("/login", loginUser);
+utilisateurRouter.post("/register", registerUser);
+utilisateurRouter.post("/login", loginUser);
 
-usersRouter.put("/:idUser", updateUser);
-usersRouter.delete("/:idUser", deleteUser);
+utilisateurRouter.put("/:idUser", updateUser);
+utilisateurRouter.delete("/:idUser", deleteUser);
 
-usersRouter.get("/", getAllUsers);
-usersRouter.get("/:idUser", getUserById);
-usersRouter.get("/get/count", getUserCount);
+utilisateurRouter.get("/", getAllUsers);
+utilisateurRouter.get("/:idUser", getUserById);
+utilisateurRouter.get("/get/count", getUserCount);
 
-export default usersRouter;
+export default utilisateurRouter;
