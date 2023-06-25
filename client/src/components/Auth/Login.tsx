@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
 import AuthService from "../../services/AuthService";
+import { useNavigate }             from "react-router-dom";
 
 export const Login: React.FC = () => {
+  const navigate = useNavigate()
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,11 +19,13 @@ export const Login: React.FC = () => {
             emailRef.current.value,
             passwordRef.current.value
         )
-      console.log(response.data)
+      console.log(response)
       }
+      navigate("/accueil")
 
     } catch (error:any) {
       console.log(error.response)
+      setErrorMsg(error.response.data.message)
     }
   };
 
@@ -52,6 +57,7 @@ export const Login: React.FC = () => {
             </button>
           </div>
         </form>
+        <p>{errorMsg}</p>
       </div>
   );
 };
