@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Utilisateur           from "../models/Utilisateur";
 import bcrypt                from "bcryptjs"
-import jwt from "jsonwebtoken"
+import jwt                   from "jsonwebtoken"
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
@@ -24,7 +24,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const user = new Utilisateur({
       nom,
       prenom,
-      nomComplet: `${prenom} ${nom}`,
+      nomComplet: `${ prenom } ${ nom }`,
       password: passwordHash,
       email,
       role,
@@ -44,27 +44,42 @@ export const registerUser = async (req: Request, res: Response) => {
 }
 
 export const loginUser = async (req: Request, res: Response) => {
-    const { email, password } = req.body
-    if(!email || !password) {
-      return res.status(400).json({message: "l'email et le mot de passe sont nécessaires "})
-    }
+  const { email, password } = req.body
+  if ( !email || !password ) {
+    return res.status(400).json({ message: "l'email et le mot de passe sont nécessaires " })
+  }
 
-    const utilisateur = await Utilisateur.findOne({ email })
-    if ( !utilisateur ) {
-      return res.status(400).json({ message: "email ou mot de pass incorrect" })
-    }
+  const utilisateur = await Utilisateur.findOne({ email })
+  if ( !utilisateur ) {
+    return res.status(400).json({ message: "email ou mot de pass incorrect" })
+  }
 
-    const isPasswordMatch = await bcrypt.compare(password, utilisateur.password)
-    if ( !isPasswordMatch ) {
-      return res.status(400).json({ message: "email ou mot de pass incorrect" })
-    }
+  const isPasswordMatch = await bcrypt.compare(password, utilisateur.password)
+  if ( !isPasswordMatch ) {
+    return res.status(400).json({ message: "email ou mot de pass incorrect" })
+  }
 
-    const token = jwt.sign(
-        { id: utilisateur._id },
-        process.env.JWT_SECRET, { expiresIn: "1h" }
-    )
-    res.status(200).json({utilisateur: utilisateur.email, token })
+  const token = jwt.sign(
+      { id: utilisateur._id },
+      process.env.JWT_SECRET, { expiresIn: "1h" }
+  )
+  res.status(200).json({ utilisateur: utilisateur.email, token })
 }
+
+export const getUserInfo = async (req: Request, res: Response) => {
+  try {
+    const utilisateur = await Utilisateur.findOne({ _id: req.user.id });
+    utilisateur.password = undefined
+    if ( !utilisateur ) {
+      return res.status(404).send({ message: "Utilisateur introuvable" });
+    }
+    res.status(200).send({
+      utilisateur
+    });
+  } catch (error) {
+    res.status(500).send({ message: "Erreur lors de la récupération des informations" });
+  }
+};
 
 export const updateUser = async (req: Request, res: Response) => {
 
