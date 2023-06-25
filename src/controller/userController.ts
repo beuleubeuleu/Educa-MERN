@@ -24,6 +24,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const user = new Utilisateur({
       nom,
       prenom,
+      nomComplet: `${prenom} ${nom}`,
       password: passwordHash,
       email,
       role,

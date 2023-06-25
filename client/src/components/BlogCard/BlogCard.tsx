@@ -21,9 +21,9 @@ export const BlogCard = ({article}: BlogCardProps) => {
           <h2>{ titre }</h2>
 
           <p>
-            écrit par
-            <a href={ `/auteur/${ slugify(auteur) }` }>{ auteur }</a>
-            | { formatDate(dateCreation) }
+            écrit par•
+            <a href={ `/auteur/${ slugify(auteur.nomComplet) }` }>{ auteur.nomComplet }</a>
+            {" "}| { formatDate(dateCreation) }
           </p>
         </div>
         <a href={ url } className="blogcard__link--button"> Lire l'article</a>

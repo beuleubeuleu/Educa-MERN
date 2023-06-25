@@ -2,7 +2,7 @@ export type articleType = {
 titre: string,
   _id:string
   contenu: string,
-  auteur: string,
+  auteur: {nomComplet: string, _id:string},
   dateCreation: Date,
   estBrouillon: boolean,
   imagePath: string,
