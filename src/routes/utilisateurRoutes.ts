@@ -12,7 +12,7 @@ utilisateurRouter.delete("/:idUser", deleteUser);
 
 utilisateurRouter.get("/", getAllUsers);
 utilisateurRouter.get("/:idUser", getUserById);
-utilisateurRouter.get("/get/count", getUserCount);
-utilisateurRouter.get("/get/user-info", estConnecté, getUserInfo);
+utilisateurRouter.get("/count", getUserCount);
+utilisateurRouter.get("/user-info", estConnecté, getUserInfo);
 
 export default utilisateurRouter;
