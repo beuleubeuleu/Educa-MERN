@@ -13,6 +13,6 @@ export const estConnecté = async (req: Request, res: Response, next: NextFuncti
     req.user = await Utilisateur.findById(decodedToken.id)
     next();
   } catch (error) {
-    return res.status(401).send({ message: "L'authentification a échoué" });
+    return res.status(401).send({ message: "L'authentification a échoué", error });
   }
 };

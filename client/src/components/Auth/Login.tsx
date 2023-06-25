@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import AuthService from "../../services/AuthService";
+import AuthService                 from "../../services/AuthService";
 import { useNavigate }             from "react-router-dom";
 
 export const Login: React.FC = () => {
@@ -14,17 +14,15 @@ export const Login: React.FC = () => {
     e.preventDefault();
 
     try {
-      if (emailRef.current && passwordRef.current) {
-        const response = await AuthService.login(
+      if ( emailRef.current && passwordRef.current ) {
+        await AuthService.login(
             emailRef.current.value,
             passwordRef.current.value
         )
-      console.log(response)
       }
       navigate("/accueil")
 
-    } catch (error:any) {
-      console.log(error.response)
+    } catch (error: any) {
       setErrorMsg(error.response.data.message)
     }
   };
@@ -57,7 +55,7 @@ export const Login: React.FC = () => {
             </button>
           </div>
         </form>
-        <p>{errorMsg}</p>
+        <p>{ errorMsg }</p>
       </div>
   );
 };

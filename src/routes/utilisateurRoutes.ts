@@ -4,15 +4,15 @@ import { estConnecté }                                                         
 
 const utilisateurRouter = Router();
 
+utilisateurRouter.get("/", getAllUsers);
 utilisateurRouter.post("/register", registerUser);
 utilisateurRouter.post("/login", loginUser);
 
+utilisateurRouter.get("/user-info", estConnecté, getUserInfo);
+utilisateurRouter.get("/count", getUserCount);
+
+utilisateurRouter.get("/:idUser", getUserById);
 utilisateurRouter.put("/:idUser", updateUser);
 utilisateurRouter.delete("/:idUser", deleteUser);
-
-utilisateurRouter.get("/", getAllUsers);
-utilisateurRouter.get("/:idUser", getUserById);
-utilisateurRouter.get("/count", getUserCount);
-utilisateurRouter.get("/user-info", estConnecté, getUserInfo);
 
 export default utilisateurRouter;
