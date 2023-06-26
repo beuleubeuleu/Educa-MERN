@@ -6,6 +6,7 @@ import UserProvider                             from "./context/UserContext.tsx"
 import { Header }                               from "./components/Header/Header.tsx";
 import CategorieProvider                        from "./context/CategorieContext.tsx";
 import { CategorieList }                        from "./pages/Catégories/CategorieList.tsx";
+import Register                                 from "./components/Auth/Register.tsx";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
                 <Route element={ <><Header/> <Outlet/></> }>
                   <Route path="/" element={ <h2>/</h2> }/>
                   <Route path="/connexion" element={ <Login/> }/>
+                  <Route path="/inscription" element={ <Register/> }/>
                   <Route path="/profile" element={ <>salut</> }/>
                   <Route path="/article" element={ <BlogList/> }/>
                   <Route path="/categorie" element={ <CategorieList/> }/>
