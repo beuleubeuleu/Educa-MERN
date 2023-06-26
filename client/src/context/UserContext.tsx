@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import AuthService                                                        from "../services/AuthService";
 import { utilisateurType }                                       from "../types/utilisateurType.ts";
 

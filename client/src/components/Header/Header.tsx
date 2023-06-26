@@ -18,7 +18,6 @@ export const Header = () => {
     { title: "S'inscrire", path: "/inscription" },
     { title: "Se connecter", path: "/connexion" },
     { title: "À propos", path: "/" },
-    { title: "profile", path: "/profile" },
   ];
 
   const élèveMenu: menuType = [

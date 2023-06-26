@@ -13,11 +13,13 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route element={ <><Header/> <Outlet/></> }>
-                <Route path="/inscription" element={ <Login/> }/>
+                <Route path="/" element={ <h2>/</h2> }/>
+                <Route path="/connexion" element={ <Login/> }/>
                 <Route path="/profile" element={ <>salut</> }/>
                 <Route path="/article" element={ <BlogList/> }/>
                 <Route path="/categorie" element={ <h2>toutes les categories</h2> }/>
                 <Route path="/categorie/:id" element={ <h2>une categorie</h2> }/>
+                <Route path="/admin" element={ <h2>admin</h2> }/>
               </Route>
             </Routes>
           </BrowserRouter>
