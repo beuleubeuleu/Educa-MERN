@@ -1,7 +1,9 @@
 import "./Header.css"
-import { Fragment } from "react";
-import { useUserContext }    from "../../context/UserContext.tsx";
+import { Fragment, useEffect, useState } from "react";
+import { useUserContext }                from "../../context/UserContext.tsx";
 import { Link, useNavigate } from "react-router-dom";
+import CategoriesService from "../../services/CategoriesService.ts";
+import categoriesService                 from "../../services/CategoriesService.ts";
 
 type menuType = {
   title: string;
@@ -12,6 +14,21 @@ type menuType = {
 export const Header = () => {
   const navigate = useNavigate()
   const { user, logout } = useUserContext()
+
+  const [catégoriesMenuItem, setCatégoriesMenuItem] = useState([]);
+
+  const getCategoriesMenuItem = async () => {
+    const catégories = await CategoriesService.getAll()
+    const catégoriesMenuItem = catégories.map((catégorie: any)=>{
+      return {title: catégorie.titre, path:`/categorie/${catégorie._id}`, id:catégorie._id}
+    })
+    setCatégoriesMenuItem(catégoriesMenuItem)
+  }
+
+  useEffect(() => {
+    getCategoriesMenuItem()
+  }, []);
+
   let menu: menuType = []
 
   const invitéMenu: menuType = [
@@ -22,13 +39,13 @@ export const Header = () => {
 
   const élèveMenu: menuType = [
     { title: "Article", path: "/article" },
-    { title: "Catégorie", path: "/categorie" },
+    { title: "Catégorie", path: "/categorie", children: catégoriesMenuItem },
     { title: "profile", path: "/profile" },
   ];
 
   const professeurMenu: menuType = [
     { title: "Article", path: "/article" },
-    { title: "Catégorie", path: "/categorie" },
+    { title: "Catégorie", path: "/categorie", children: catégoriesMenuItem },
     { title: "Écrire un article", path: "/article/nouveau" },
     { title: "profile", path: "/profile" },
   ];

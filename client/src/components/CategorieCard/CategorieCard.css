@@ -1,0 +1,49 @@
+.categorieCard__container:hover {
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.categorieCard__container {
+  width: 300px;
+  margin: 3em auto auto;
+  position: relative;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0px 20px 50px #d9dbdf;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.categorieCard__link--button {
+  background-color: #5d9892;
+  color: white;
+  padding: 0.6em 0.2em;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.categorieCard__container img {
+  width: 300px;
+  height: 200px;
+}
+
+.categorieCard__texte {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.categorieCard__texte p {
+  font-size: 0.7rem;
+}
+
+.categorieCard__titre {
+  font-size: 1.3rem;
+}

@@ -2,7 +2,7 @@ import { Loader }   from "../Loader/Loader.tsx";
 import { BlogCard } from "../BlogCard/BlogCard.tsx";
 import useFetch     from "../../hooks/useFetch.ts";
 import { articleType } from "../../types/articleType.ts";
-import "./BlogList.css"
+import "../../style/CardList.css"
 import { useUserContext } from "../../context/UserContext.tsx";
 
 export const BlogList = () => {
@@ -11,10 +11,12 @@ export const BlogList = () => {
 
   return (
       <>
-        <h2> salut {user?.nomComplet} Tous les articles:</h2>
-        <ul className="bloglist">{ isLoading && <Loader/> }
+        <h2 className="card__titre"> salut {user?.nomComplet} Tous les articles:</h2>
+        <ul className="card__liste">
+          { isLoading && <Loader/> }
           { error && <p>what the heck</p> }
-          { data && data.articles.map(article => <BlogCard article={ article } key={ article._id }/>) }</ul>
+          { data && data.articles.map(article => <BlogCard article={ article } key={ article._id }/>) }
+        </ul>
       </>
   );
 };
