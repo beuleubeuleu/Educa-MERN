@@ -11,7 +11,7 @@ utilisateurRouter.post("/login", loginUser);
 utilisateurRouter.get("/user-info", estConnecté, getUserInfo);
 utilisateurRouter.get("/count", getUserCount);
 
-utilisateurRouter.get("/:idUser", getUserById);
+utilisateurRouter.get("/:idUser", estConnecté, getUserById);
 utilisateurRouter.put("/:idUser", updateUser);
 utilisateurRouter.delete("/:idUser", deleteUser);
 
