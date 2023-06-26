@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import AuthService                                               from "../services/AuthService";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import AuthService                                                        from "../services/AuthService";
 import { utilisateurType }                                       from "../types/utilisateurType.ts";
 
 type contextProps = {
@@ -24,9 +24,11 @@ const UserProvider = ({ children }: contextProps) => {
   const [user, setUser] = useState<utilisateurType | null>(null);
 
   async function checkUserData(): Promise<any> {
-    const loggedInUser = await AuthService.getLoggedInUser();
-    if ( loggedInUser ) {
+    try {
+      const loggedInUser = await AuthService.getLoggedInUser();
       setUser(loggedInUser.data.utilisateur);
+    } catch (error) {
+      setUser(null);
     }
   }
 

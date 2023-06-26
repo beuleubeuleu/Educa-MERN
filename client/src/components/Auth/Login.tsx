@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
         )
       }
       checkUserData()
-      navigate("/accueil")
+      navigate("/profile")
 
     } catch (error: any) {
       setErrorMsg(error.response.data.message)
