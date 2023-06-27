@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import AuthService                 from "../../services/AuthService";
-import { useNavigate }             from "react-router-dom";
-import { useUserContext }          from "../../context/UserContext.tsx";
+import AuthService           from "../../services/AuthService";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserContext }    from "../../context/UserContext.tsx";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate()
@@ -37,7 +37,7 @@ export const Login: React.FC = () => {
 
   return (
       <div className="">
-        <h3 className="">Login</h3>
+        <h3 className="">Connexion</h3>
         <form className="" onSubmit={ handleSubmit }>
           <div className="">
             <input className="" type="email" name="email" placeholder="Email" ref={ emailRef }/>
@@ -46,7 +46,7 @@ export const Login: React.FC = () => {
                   className=""
                   type={ showPassword? "text": "password" }
                   name="password"
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   ref={ passwordRef }
               />
               <label className="">
@@ -60,6 +60,7 @@ export const Login: React.FC = () => {
           </div>
         </form>
         <p>{ errorMsg }</p>
+        <p>Pas encore inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
       </div>
   );
 };

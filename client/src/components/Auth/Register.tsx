@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import AuthService                 from "../../services/AuthService";
+import { Link }                    from "react-router-dom";
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,9 +10,12 @@ const Register: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const prenomRef = useRef<HTMLInputElement>(null);
+  const élèveRef = useRef<HTMLInputElement>(null);
+  const professeurRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(professeurRef)
 
     try {
       await AuthService.register(
@@ -19,7 +23,7 @@ const Register: React.FC = () => {
           prenomRef.current!.value,
           emailRef.current!.value,
           passwordRef.current!.value,
-          e.currentTarget.role!
+          professeurRef.current!.checked? professeurRef.current!.value: élèveRef.current!.value
       )
       setIsRegisterSuccess(true)
     } catch (error: any) {
@@ -31,18 +35,9 @@ const Register: React.FC = () => {
     setShowPassword(!showPassword);
   };
 
-  if ( isRegisterSuccess ) {
-    return <>
-      <iframe src="https://giphy.com/embed/111ebonMs90YLu" width="480" height="360"
-              className="giphy-embeded" allowFullScreen></iframe>
-      <p>
-        <a href="https://giphy.com/gifs/thumbs-up-111ebonMs90YLu">via GIPHY</a>
-      </p>
-    </>
-  }
   return (
       <div className="">
-        <h3 className="">Registration</h3>
+        <h3 className="">Inscription</h3>
         <form className="" onSubmit={ handleSubmit }>
 
           <div className="">
@@ -50,10 +45,10 @@ const Register: React.FC = () => {
             <input className="" type="tel" name="phone" placeholder="Prénom" required ref={ prenomRef }/>
 
             <label htmlFor="role">Vous vous inscrivez en tant que:
-            <input type="radio" id="eleve" name="role" value="eleve" defaultChecked/>
-            <label htmlFor="eleve">Élève</label>
-            <input type="radio" id="professeur" name="role" value="professeur"/>
-            <label htmlFor="professeur">Professeur</label>
+              <input type="radio" id="eleve" name="role" value="élève"  ref={élèveRef} defaultChecked/>
+              <label htmlFor="eleve">Élève</label>
+              <input type="radio" id="professeur" name="role" value="professeur" ref={professeurRef} />
+              <label htmlFor="professeur">Professeur</label>
             </label>
           </div>
 
@@ -67,8 +62,9 @@ const Register: React.FC = () => {
             </label>
           </div>
 
-          <button className="" type="submit">Register</button>
+          <button className="" type="submit">Inscription</button>
         </form>
+        <p>Déjà inscrit ? <span><Link to="/connexion">Connectez-vous!</Link></span></p>
       </div>
   );
 };
