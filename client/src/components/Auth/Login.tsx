@@ -36,7 +36,7 @@ export const Login: React.FC = () => {
   };
 
   return (
-      <div className="">
+      <div className="container">
         <h3 className="">Connexion</h3>
         <form className="" onSubmit={ handleSubmit }>
           <div className="">

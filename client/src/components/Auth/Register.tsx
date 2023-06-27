@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import AuthService                 from "../../services/AuthService";
 import { Link, useNavigate }       from "react-router-dom";
+import "./Register.css"
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ const Register: React.FC = () => {
   };
 
   return (
-      <div className="">
+      <div className="register-form">
         <h3 className="">Inscription</h3>
         <form className="" onSubmit={ handleSubmit }>
 
@@ -43,11 +44,15 @@ const Register: React.FC = () => {
             <input className="" type="text" name="name" placeholder="Nom" required ref={ nomRef }/>
             <input className="" type="tel" name="phone" placeholder="Prénom" required ref={ prenomRef }/>
 
-            <label htmlFor="role">Vous vous inscrivez en tant que:
-              <input type="radio" id="eleve" name="role" value="élève" ref={ élèveRef } defaultChecked/>
-              <label htmlFor="eleve">Élève</label>
-              <input type="radio" id="professeur" name="role" value="professeur" ref={ professeurRef }/>
-              <label htmlFor="professeur">Professeur</label>
+            <label className="register-radio" htmlFor="role">Vous vous inscrivez en tant que: <br/>
+              <label htmlFor="eleve">
+                Élève
+                <input type="radio" id="eleve" name="role" value="élève" ref={ élèveRef } defaultChecked/>
+              </label>
+              <label htmlFor="professeur">
+                Professeur
+                <input type="radio" id="professeur" name="role" value="professeur" ref={ professeurRef }/>
+              </label>
             </label>
           </div>
 

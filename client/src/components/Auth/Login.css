@@ -1,0 +1,50 @@
+/* Styles spécifiques au composant de connexion */
+.container {
+  max-width: 100%;
+  padding: 1.3em;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  margin-top: 4em;
+}
+
+.container h3 {
+  margin-bottom: 1em;
+  font-size: 1.5rem;
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+  width: 100%;
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.container button {
+  background-color: #5d9892;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: .8em 1.2em;
+  margin-top : .3em;
+}
+
+/* Styles spécifiques au mode "responsive" pour une largeur minimale de 900px */
+@media screen and (min-width: 900px) {
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align : center;
+  }
+
+  .container {
+    width: 400px;
+    margin-inline: auto;
+  }
+}
