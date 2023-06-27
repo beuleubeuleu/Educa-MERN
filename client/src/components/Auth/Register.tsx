@@ -25,7 +25,7 @@ const Register: React.FC = () => {
           passwordRef.current!.value,
           professeurRef.current!.checked? professeurRef.current!.value: élèveRef.current!.value
       )
-      navigate("/")
+      navigate("/connexion")
     } catch (error: any) {
       console.log(error)
     }
