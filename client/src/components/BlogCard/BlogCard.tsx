@@ -1,4 +1,4 @@
-import { formatDate, slugify } from "../../ts/utils";
+import { formatDate } from "../../ts/utils";
 import { articleType }         from "../../types/articleType.ts";
 import "./BlogCard.css"
 import { Link }                from "react-router-dom";
@@ -17,13 +17,13 @@ export const BlogCard = ({article}: BlogCardProps) => {
         <Link to={ url }>
           <img src={ imagePath } alt={ imageAlt } width="600" height="400"/>
         </Link>
-        <Link className="blogcard__categorie" to={ `/article/categorie/${ slugify(categorie.titre) }` }>{ categorie.titre }</Link>
+        <Link className="blogcard__categorie" to={ `/article/categorie/${ categorie._id }` }>{ categorie.titre }</Link>
         <div className="blogcard__texte">
           <h2>{ titre }</h2>
 
           <p>
             écrit par•
-            <Link to={ `/auteur/${ slugify(auteur.nomComplet) }` }>{ auteur.nomComplet }</Link>
+            <Link to={ `/article/auteur/${ auteur._id }` }>{ auteur.nomComplet }</Link>
             {" "}| { formatDate(dateCreation) }
           </p>
         </div>

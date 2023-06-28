@@ -2,13 +2,13 @@ import axios                           from "axios";
 import { getObjectFromSessionStorage } from "../ts/utils.tsx";
 
 class ArticleService {
-  static async getAll() {
-    const response = await axios.get("/api/article", {
+  static async getAllPublic() {
+    const response = await axios.get("/api/article/public", {
       headers: {
         Authorization: "Bearer " + getObjectFromSessionStorage("token")
       }
     })
-    return response.data.categories
+    return response.data.articles
   }
 
   static async createArticle(article: {
