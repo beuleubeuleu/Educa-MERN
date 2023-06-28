@@ -1,9 +1,9 @@
-import { Loader }   from "../Loader/Loader.tsx";
+import { Loader }   from "../../../components/Loader/Loader.tsx";
 import { BlogCard } from "../BlogCard/BlogCard.tsx";
-import "../../style/CardList.css"
-import { useUserContext } from "../../context/UserContext.tsx";
-import ArticleService from "../../services/ArticleService.ts";
-import { articleType }         from "../../types/articleType.ts";
+import "../../../style/CardList.css"
+import { useUserContext }      from "../../../context/UserContext.tsx";
+import ArticleService          from "../../../services/ArticleService.ts";
+import { articleType }         from "../../../types/articleType.ts";
 import { useEffect, useState } from "react";
 
 export const BlogList = () => {

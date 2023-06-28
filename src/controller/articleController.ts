@@ -82,7 +82,16 @@ export const getAllPublicArticles = async (req: Request, res: Response) => {
 }
 
 export const getOneArticle = async (req: Request, res: Response) => {
-  //TODO: coder la fonction
+  try {
+    const article = await Article.findById(req.params.idArticle).populate("categorie", "titre").populate("auteur", "nomComplet");
+    if (!article){
+      return res.status(500).json({ success:false, message: "La récupération de l'article à échoué" });
+    }
+    res.status(200).json({ success:true, article });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success:false, message: error.message });
+  }
 }
 
 export const updateArticle = async (req: Request, res: Response) => {

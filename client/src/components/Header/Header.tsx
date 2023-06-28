@@ -18,7 +18,7 @@ export const Header = () => {
 
   const getCategoriesMenuItem = async () => {
     const catégoriesMenuItem = catégories.map((catégorie) => {
-      return { title: catégorie.titre, path: `/categorie/${ catégorie._id }`, id: catégorie._id }
+      return { title: catégorie.titre, path: `/article/categorie/${ catégorie._id }`, id: catégorie._id }
     })
     setCatégoriesMenuItem(catégoriesMenuItem)
   }

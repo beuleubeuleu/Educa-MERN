@@ -2,14 +2,6 @@ import axios                           from "axios";
 import { getObjectFromSessionStorage } from "../ts/utils.tsx";
 
 class ArticleService {
-  static async getAllPublic() {
-    const response = await axios.get("/api/article/public", {
-      headers: {
-        Authorization: "Bearer " + getObjectFromSessionStorage("token")
-      }
-    })
-    return response.data.articles
-  }
 
   static async createArticle(article: {
     titre: string,
@@ -31,6 +23,23 @@ class ArticleService {
     }
   }
 
+  static async getAllPublic() {
+    const response = await axios.get("/api/article/public", {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data.articles
+  }
+
+  static async getOneById(idArticle: string){
+    const response = await axios.get(`/api/article/${idArticle}`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data.article
+  }
 
 }
 

@@ -1,7 +1,7 @@
-import { formatDate } from "../../ts/utils";
-import { articleType }         from "../../types/articleType.ts";
+import { formatDate }  from "../../../ts/utils.tsx";
+import { articleType } from "../../../types/articleType.ts";
 import "./BlogCard.css"
-import { Link }                from "react-router-dom";
+import { Link }        from "react-router-dom";
 
 type BlogCardProps = {
   article:articleType
@@ -11,6 +11,7 @@ export const BlogCard = ({article}: BlogCardProps) => {
 
   const {imagePath, imageAlt, categorie, titre, auteur, dateCreation} = article
   const url = `/article/${article._id}`
+  console.log(imagePath)
 
   return (
       <li className="blogcard__container">

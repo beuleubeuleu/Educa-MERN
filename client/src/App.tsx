@@ -1,6 +1,6 @@
 import "./App.css"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { BlogList }                             from "./components/BlogList/BlogList.tsx";
+import { BlogList }                             from "./pages/Article/BlogList/BlogList.tsx";
 import UserProvider                             from "./context/UserContext.tsx";
 import { Header }                               from "./components/Header/Header.tsx";
 import CategorieProvider                        from "./context/CategorieContext.tsx";
@@ -12,6 +12,7 @@ import { GuestRoutes }                          from "./components/Routes/GuestR
 import { ProfRoutes }                           from "./components/Routes/ProfRoutes.tsx";
 import { AdminRoutes }                          from "./components/Routes/AdminRoutes.tsx";
 import { NouvelArticle }                        from "./pages/NouvelArticle/NouvelArticle.tsx";
+import { ArticleLayout }                        from "./pages/Article/ArticleLayout/ArticleLayout.tsx";
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
                   <Route element={ <PrivateRoutes/> }>
                     <Route path="/" element={ <h2>/</h2> }/>
                     <Route path="/article" element={ <BlogList/> }/>
-                    <Route path="/article/:id" element={ <BlogList/> }/>
+                    <Route path="/article/:idArticle" element={ <ArticleLayout/> }/>
                     <Route path="/categorie" element={ <CategorieList/> }/>
                     <Route path="/article/categorie/:id" element={ <h2>une categorie</h2> }/>
                     <Route path="/article/auteur/:id" element={ <h2>un auteur</h2> }/>
