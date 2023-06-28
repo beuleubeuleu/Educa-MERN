@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from "axios";
 interface UseFetchResponse<T> {
   data: T | null;
   error: Error | null;
-  isLoading: boolean;
+  isFetching: boolean;
 }
 
 function useFetch<T = unknown>(
@@ -12,13 +12,13 @@ function useFetch<T = unknown>(
 ): UseFetchResponse<T> {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
 
   useEffect(() => {
     let isMounted = true;
 
     const fetchData = async () => {
-      setIsLoading(true);
+      setIsFetching(true);
 
       try {
         const response: AxiosResponse<T> = await axios.get(url);
@@ -31,7 +31,7 @@ function useFetch<T = unknown>(
         }
       } finally {
         if (isMounted) {
-          setIsLoading(false);
+          setIsFetching(false);
         }
       }
     };
@@ -43,7 +43,7 @@ function useFetch<T = unknown>(
     };
   }, [url]);
 
-  return { data, error, isLoading };
+  return { data, error, isFetching };
 }
 
 export default useFetch;

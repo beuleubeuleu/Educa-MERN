@@ -9,3 +9,13 @@ export const slugify = (string: string): string =>
 export function formatDate(date: Date) {
   return new Date(date).toLocaleDateString("fr-EU");
 }
+
+export const getObjectFromSessionStorage = (key: string) => {
+  const storedItem = sessionStorage.getItem(key);
+
+  let item = null
+  if ( storedItem ) {
+    item = JSON.parse(storedItem)
+  }
+  return item
+}

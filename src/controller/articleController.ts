@@ -5,7 +5,8 @@ import Article               from "../models/Article";
 
 export const createArticle = async (req: Request, res: Response) => {
   try {
-    const { titre, contenu, auteur, imageAlt, estBrouillon, description } = req.body
+    const { titre, contenu, imageAlt, description } = req.body
+    let {estBrouillon} = req.body
     if ( req.file && !imageAlt ) {
       res.status(400).send({
         success: false,
@@ -17,9 +18,13 @@ export const createArticle = async (req: Request, res: Response) => {
     const categorie = await Categorie.findById(req.body.categorie)
     const imagePath = req.file?req.file.path.split("/").slice(2).join("/"): categorie.imagePath
 
+    if (req.user.statut != "ok") {
+      estBrouillon = true
+    }
+
     const nouvelArticle = {
       titre,
-      auteur,
+      auteur: req.user._id,
       contenu,
       dateCreation: Date.now(),
       estBrouillon,
@@ -52,7 +57,20 @@ export const deleteArticle = async (req: Request, res: Response) => {
 
 export const getAllArticles = async (req: Request, res: Response) => {
   try {
-    const articles = await Article.find().populate("categorie", "titre");
+    const articles = await Article.find().populate("categorie", "titre").populate("auteur", "nomComplet");
+    if (!articles){
+      return res.status(500).json({ success:false, message: "La récupération des articles à échoué" });
+    }
+    res.status(200).json({ success:true, articles });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success:false, message: error.message });
+  }
+}
+
+export const getAllPublicArticles = async (req: Request, res: Response) => {
+  try {
+    const articles = await Article.find({estBrouillon:false}).populate("categorie", "titre").populate("auteur", "nomComplet");
     if (!articles){
       return res.status(500).json({ success:false, message: "La récupération des articles à échoué" });
     }
@@ -64,7 +82,16 @@ export const getAllArticles = async (req: Request, res: Response) => {
 }
 
 export const getOneArticle = async (req: Request, res: Response) => {
-  //TODO: coder la fonction
+  try {
+    const article = await Article.findById(req.params.idArticle).populate("categorie", "titre").populate("auteur", "nomComplet");
+    if (!article){
+      return res.status(500).json({ success:false, message: "La récupération de l'article à échoué" });
+    }
+    res.status(200).json({ success:true, article });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success:false, message: error.message });
+  }
 }
 
 export const updateArticle = async (req: Request, res: Response) => {
