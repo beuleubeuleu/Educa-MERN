@@ -13,7 +13,6 @@ type menuType = {
 export const Header = () => {
   const { user, logout } = useUserContext()
   const { catégories } = useCategorieContext()
-  console.log(catégories)
 
   const [catégoriesMenuItem, setCatégoriesMenuItem] = useState<any[]>([]);
 
@@ -50,7 +49,7 @@ export const Header = () => {
 
   const adminMenu: menuType = [
     { title: "Index", path: "/admin" },
-    { title: "Validation-Professeur", path: "/admin/prof-application" },
+    { title: "Validation-Professeur", path: "/admin/validation-professeur" },
     { title: "Dashboard", path: "/admin/dashboard" }
   ];
 

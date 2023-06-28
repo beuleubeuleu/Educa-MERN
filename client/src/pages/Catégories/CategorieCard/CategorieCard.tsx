@@ -1,6 +1,6 @@
 import "./CategorieCard.css"
 import { Link }            from "react-router-dom";
-import { ImageWithLoader } from "../ImageWithLoader.tsx";
+import { ImageWithLoader } from "../../../components/ImageWithLoader.tsx";
 
 type CategorieCardProps = {
   catégorie: any

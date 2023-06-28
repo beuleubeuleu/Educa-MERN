@@ -1,5 +1,5 @@
 import { useCategorieContext } from "../../context/CategorieContext.tsx";
-import { CategorieCard }            from "../../components/CategorieCard/CategorieCard.tsx";
+import { CategorieCard }       from "./CategorieCard/CategorieCard.tsx";
 import  "../../style/CardList.css"
 
 export const CategorieList = () => {
