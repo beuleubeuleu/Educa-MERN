@@ -41,6 +41,15 @@ class ArticleService {
     return response.data.article
   }
 
+  static async getAllByCategory(idCategorie: string){
+    const response = await axios.get(`/api/article/categorie/${idCategorie}`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data.articles
+  }
+
 }
 
 export default ArticleService

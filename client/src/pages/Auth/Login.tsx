@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import AuthService                 from "../../services/AuthService";
+import AuthService                 from "../../services/AuthService.ts";
 import { Link }                    from "react-router-dom";
 import { useUserContext }          from "../../context/UserContext.tsx";
 

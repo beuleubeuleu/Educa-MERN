@@ -38,5 +38,13 @@ export const getAllCategories = async (req: Request, res: Response) => {
 }
 
 export const getOneCategory = async (req: Request, res: Response) => {
-//TODO: coder la fonction
-}
+  try {
+    const categorie = await Categorie.findById(req.params.idCategorie);
+    if (!categorie){
+      return res.status(500).json({ success:false, message: "La récupération de la catégorie à échoué" });
+    }
+    res.status(200).json({ success:true, categorie });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success:false, message: error.message });
+  }}
