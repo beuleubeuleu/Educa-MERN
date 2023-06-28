@@ -9,7 +9,7 @@ type CategorieCardProps = {
 export const CategorieCard = ({ catégorie }: CategorieCardProps) => {
 
   const { imagePath, imageAlt, titre } = catégorie
-  const url = `/categorie/${ catégorie._id }`
+  const url = `/article/categorie/${ catégorie._id }`
 
   return (
       <li className="categorieCard__container">

@@ -35,8 +35,10 @@ function App() {
                   <Route element={ <PrivateRoutes/> }>
                     <Route path="/" element={ <h2>/</h2> }/>
                     <Route path="/article" element={ <BlogList/> }/>
+                    <Route path="/article/:id" element={ <BlogList/> }/>
                     <Route path="/categorie" element={ <CategorieList/> }/>
-                    <Route path="/categorie/:id" element={ <h2>une categorie</h2> }/>
+                    <Route path="/article/categorie/:id" element={ <h2>une categorie</h2> }/>
+                    <Route path="/article/auteur/:id" element={ <h2>un auteur</h2> }/>
                   </Route>
 
                   //routes de user Professeur-----------------------
