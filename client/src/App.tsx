@@ -11,6 +11,7 @@ import { Login }                                from "./components/Auth/Login.ts
 import { GuestRoutes }                          from "./components/Routes/GuestRoutes.tsx";
 import { ProfRoutes }                           from "./components/Routes/ProfRoutes.tsx";
 import { AdminRoutes }                          from "./components/Routes/AdminRoutes.tsx";
+import { NouvelArticle }                        from "./pages/NouvelArticle/NouvelArticle.tsx";
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
                   //routes de user Professeur-----------------------
                   <Route element={ <ProfRoutes/> }>
-                    <Route path="/article/nouveau" element={ <></> }/>
+                    <Route path="/article/nouveau" element={ <NouvelArticle/> }/>
                     <Route path="/article/mes-articles" element={ <BlogList/> }/>
                   </Route>
 
