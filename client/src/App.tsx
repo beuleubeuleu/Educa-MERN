@@ -5,10 +5,12 @@ import UserProvider                             from "./context/UserContext.tsx"
 import { Header }                               from "./components/Header/Header.tsx";
 import CategorieProvider                        from "./context/CategorieContext.tsx";
 import { CategorieList }                        from "./pages/Catégories/CategorieList.tsx";
-import Register          from "./components/Auth/Register.tsx";
-import { PrivateRoutes } from "./components/Routes/PrivateRoutes.tsx";
-import { Login }         from "./components/Auth/Login.tsx";
+import Register                                 from "./components/Auth/Register.tsx";
+import { PrivateRoutes }                        from "./components/Routes/PrivateRoutes.tsx";
+import { Login }                                from "./components/Auth/Login.tsx";
 import { GuestRoutes }                          from "./components/Routes/GuestRoutes.tsx";
+import { ProfRoutes }                           from "./components/Routes/ProfRoutes.tsx";
+import { AdminRoutes }                          from "./components/Routes/AdminRoutes.tsx";
 
 
 function App() {
@@ -21,23 +23,33 @@ function App() {
               <Routes>
                 <Route element={ <><Header/> <Outlet/></> }>
 
-//route de user Invité------------------------
+                  //routes de user Invité------------------------
 
-                  <Route element={<GuestRoutes/>}>
+                  <Route element={ <GuestRoutes/> }>
                     <Route path="/connexion" element={ <Login/> }/>
                     <Route path="/inscription" element={ <Register/> }/>
                   </Route>
 
-//route de user connecté------------------------
-                  <Route element={<PrivateRoutes/>}>
+                  //routes de user Connecté------------------------
+                  <Route element={ <PrivateRoutes/> }>
                     <Route path="/" element={ <h2>/</h2> }/>
-                    <Route path="/profile" element={ <>salut</> }/>
                     <Route path="/article" element={ <BlogList/> }/>
                     <Route path="/categorie" element={ <CategorieList/> }/>
                     <Route path="/categorie/:id" element={ <h2>une categorie</h2> }/>
-                    <Route path="/admin" element={ <h2>admin</h2> }/>
                   </Route>
 
+                  //routes de user Professeur-----------------------
+                  <Route element={ <ProfRoutes/> }>
+                    <Route path="/article/nouveau" element={ <></> }/>
+                    <Route path="/article/mes-articles" element={ <BlogList/> }/>
+                  </Route>
+
+                  //routes de user Admin------------------------
+                  <Route element={ <AdminRoutes/> }>
+                    <Route path="/admin/" element={ <></> }/>
+                    <Route path="/admin/validation-professeur" element={ <></> }/>
+                    <Route path="/admin/dashboard" element={ <></> }/>
+                  </Route>
 
                 </Route>
               </Routes>

@@ -39,17 +39,17 @@ export const Header = () => {
   const élèveMenu: menuType = [
     { title: "Article", path: "/article" },
     { title: "Catégorie", path: "/categorie", children: catégoriesMenuItem },
-    { title: "profile", path: "/profile" }
   ];
 
   const professeurMenu: menuType = [
     { title: "Article", path: "/article" },
     { title: "Catégorie", path: "/categorie", children: catégoriesMenuItem },
     { title: "Écrire un article", path: "/article/nouveau" },
-    { title: "profile", path: "/profile" }
+    { title: "Mes articles", path: "/article/mes-articles" }
   ];
 
   const adminMenu: menuType = [
+    { title: "Index", path: "/admin" },
     { title: "Validation-Professeur", path: "/admin/prof-application" },
     { title: "Dashboard", path: "/admin/dashboard" }
   ];
