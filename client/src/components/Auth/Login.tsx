@@ -1,12 +1,11 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import AuthService           from "../../services/AuthService";
-import { Link, useNavigate } from "react-router-dom";
-import { useUserContext }    from "../../context/UserContext.tsx";
+import AuthService                 from "../../services/AuthService";
+import { Link }                    from "react-router-dom";
+import { useUserContext }          from "../../context/UserContext.tsx";
 
 export const Login: React.FC = () => {
-  const navigate = useNavigate()
-  const {checkUserData} = useUserContext()
+  const { checkUserData } = useUserContext()
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -24,8 +23,6 @@ export const Login: React.FC = () => {
         )
       }
       checkUserData()
-      navigate("/profile")
-
     } catch (error: any) {
       setErrorMsg(error.response.data.message)
     }
@@ -62,5 +59,5 @@ export const Login: React.FC = () => {
         <p>{ errorMsg }</p>
         <p>Pas encore inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
       </div>
-  );
+  )
 };

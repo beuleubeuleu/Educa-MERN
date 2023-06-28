@@ -1,8 +1,8 @@
 import "./Header.css"
 import { Fragment, useEffect, useState } from "react";
 import { useUserContext }                from "../../context/UserContext.tsx";
-import { Link, useNavigate }             from "react-router-dom";
-import CategoriesService                 from "../../services/CategoriesService.ts";
+import { Link }                          from "react-router-dom";
+import { useCategorieContext }           from "../../context/CategorieContext.tsx";
 
 type menuType = {
   title: string;
@@ -11,14 +11,14 @@ type menuType = {
 }[]
 
 export const Header = () => {
-  const navigate = useNavigate()
   const { user, logout } = useUserContext()
+  const { catégories } = useCategorieContext()
+  console.log(catégories)
 
-  const [catégoriesMenuItem, setCatégoriesMenuItem] = useState([]);
+  const [catégoriesMenuItem, setCatégoriesMenuItem] = useState<any[]>([]);
 
   const getCategoriesMenuItem = async () => {
-    const catégories = await CategoriesService.getAll()
-    const catégoriesMenuItem = catégories.map((catégorie: any) => {
+    const catégoriesMenuItem = catégories.map((catégorie) => {
       return { title: catégorie.titre, path: `/categorie/${ catégorie._id }`, id: catégorie._id }
     })
     setCatégoriesMenuItem(catégoriesMenuItem)
@@ -26,7 +26,7 @@ export const Header = () => {
 
   useEffect(() => {
     getCategoriesMenuItem()
-  }, []);
+  }, [catégories]);
 
   let menu: menuType = []
 
@@ -67,7 +67,6 @@ export const Header = () => {
       break;
     case "admin":
       menu = adminMenu
-      navigate("/admin")
       break;
     default:
       menu = invitéMenu
@@ -76,7 +75,7 @@ export const Header = () => {
 
   return (
       <>
-        <header className="header" >
+        <header className="header">
           <input aria-label="Mobile Menu" type="checkbox" className="header__burger"/>
 
           <Link to="/" className="header__logo">

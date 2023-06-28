@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import CategoriesService                                         from "../services/CategoriesService.ts";
+import { useUserContext }                                        from "./UserContext.tsx";
 
 type contextProps = {
   children: React.ReactNode
@@ -16,6 +17,7 @@ const CategorieContext = createContext<UserContextType>({
 export const useCategorieContext = () => useContext(CategorieContext)
 
 const CategorieProvider = ({ children }: contextProps) => {
+const {user} = useUserContext()
   const [catégories, setCatégories] = useState<any[]>([]);
 
   async function getAllCategories(): Promise<any> {
@@ -29,7 +31,7 @@ const CategorieProvider = ({ children }: contextProps) => {
 
   useEffect(() => {
     getAllCategories()
-  }, []);
+  }, [user]);
 
   return (
       <CategorieContext.Provider value={ { catégories } }>

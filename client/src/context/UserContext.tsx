@@ -8,12 +8,14 @@ type contextProps = {
 
 type UserContextType = {
   user: utilisateurType | null;
+  isLoading: boolean
   checkUserData(): void
   logout(): void
 }
 
 const UserContext = createContext<UserContextType>({
   user: null,
+  isLoading:true,
   checkUserData(): void {},
   logout(): void {}
 });
@@ -22,6 +24,7 @@ export const useUserContext = () => useContext(UserContext)
 
 const UserProvider = ({ children }: contextProps) => {
   const [user, setUser] = useState<utilisateurType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function checkUserData(): Promise<any> {
     try {
@@ -29,6 +32,8 @@ const UserProvider = ({ children }: contextProps) => {
       setUser(loggedInUser.data.utilisateur);
     } catch (error) {
       setUser(null);
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -42,7 +47,7 @@ const UserProvider = ({ children }: contextProps) => {
   }, []);
 
   return (
-      <UserContext.Provider value={ { user, checkUserData, logout } }>
+      <UserContext.Provider value={ { user, isLoading, checkUserData, logout } }>
         { children }
       </UserContext.Provider>
   );
