@@ -1,7 +1,7 @@
 import { FormEvent, useRef }   from "react";
-import { useCategorieContext } from "../../context/CategorieContext.tsx";
+import { useCategorieContext } from "../../../context/CategorieContext.tsx";
 import "./NouvelArticle.css"
-import ArticleService          from "../../services/ArticleService.ts";
+import ArticleService          from "../../../services/ArticleService.ts";
 
 export const NouvelArticle = () => {
   const titreRef = useRef<HTMLInputElement>(null);

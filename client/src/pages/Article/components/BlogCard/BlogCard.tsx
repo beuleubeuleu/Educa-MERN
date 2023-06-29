@@ -10,7 +10,7 @@ type BlogCardProps = {
 
 export const BlogCard = ({article}: BlogCardProps) => {
 
-  const {imagePath, imageAlt, categorie, titre, auteur, dateCreation} = article
+  const {imagePath, imageAlt, categorie, titre, auteur, dateCreation, description} = article
   const url = `/article/${article._id}`
 
   return (
@@ -21,7 +21,7 @@ export const BlogCard = ({article}: BlogCardProps) => {
         <Link className="blogcard__categorie" to={ `/article/categorie/${ categorie._id }` }>{ categorie.titre }</Link>
         <div className="blogcard__texte">
           <h2>{ titre }</h2>
-
+          <p>{description}</p>
           <p>
             écrit par•
             <Link to={ `/article/auteur/${ auteur._id }` }>{ auteur.nomComplet }</Link>

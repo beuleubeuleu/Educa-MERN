@@ -58,6 +58,35 @@ class ArticleService {
     })
     return response.data.articles
   }
+  static async getMesArticles() {
+    const response = await axios.get(`/api/article/auteur/mes-articles`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data.articles
+  }
+
+  static async updateArticle(article: {
+    titre: string,
+    contenu: string,
+    imageAlt?: string,
+    estBrouillon: boolean,
+    description?: string,
+    categorie: string
+  }, idArticle: string) {
+    try {
+      const response = await axios.put(`/api/article/update/${idArticle}`, article, {
+        headers: {
+          Authorization: "Bearer " + getObjectFromSessionStorage("token")
+        }
+      })
+      return response.data
+    } catch (error: any) {
+      console.log(error)
+    }
+  }
+
 }
 
 export default ArticleService

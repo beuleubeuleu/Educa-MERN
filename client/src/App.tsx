@@ -9,12 +9,14 @@ import { PrivateRoutes } from "./components/Routes/PrivateRoutes.tsx";
 import { Login }         from "./pages/Auth/Login.tsx";
 import { GuestRoutes }   from "./components/Routes/GuestRoutes.tsx";
 import { ProfRoutes }                           from "./components/Routes/ProfRoutes.tsx";
-import { AdminRoutes }                          from "./components/Routes/AdminRoutes.tsx";
-import { NouvelArticle }                        from "./pages/NouvelArticle/NouvelArticle.tsx";
-import { ArticleLayout }                        from "./pages/Article/ArticleLayout/ArticleLayout.tsx";
+import { AdminRoutes }   from "./components/Routes/AdminRoutes.tsx";
+import { NouvelArticle } from "./pages/Article/NouvelArticle/NouvelArticle.tsx";
+import { ArticleLayout } from "./pages/Article/ArticleLayout/ArticleLayout.tsx";
 import { TousLesArticles }     from "./pages/Article/TousLesArticles/TousLesArticles.tsx";
 import { ArticleParCategorie } from "./pages/Article/ArticleParCategorie/ArticleParCategorie.tsx";
 import { ArticleParAuteur } from "./pages/Article/ArticleParAuteur/ArticleParAuteur.tsx";
+import { MesArticles } from "./pages/Article/MesArticles/MesArticles.tsx";
+import { ModifierArticle } from "./pages/Article/ModifierArticle/ModifierArticle.tsx";
 
 
 function App() {
@@ -47,7 +49,8 @@ function App() {
                   //routes de user Professeur-----------------------
                   <Route element={ <ProfRoutes/> }>
                     <Route path="/article/nouveau" element={ <NouvelArticle/> }/>
-                    <Route path="/article/mes-articles" element={ <></> }/>
+                    <Route path="/article/mes-articles" element={ <MesArticles/> }/>
+                    <Route path="/article/modifier/:idArticle" element={ <ModifierArticle/> }/>
                   </Route>
 
                   //routes de user Admin------------------------
