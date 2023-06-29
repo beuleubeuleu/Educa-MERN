@@ -36,7 +36,6 @@
   color: white;
   text-decoration: none;
   padding: 0.1em 0.4em;
-  font-size: 1rem;
   border-radius: 3px 3px 0 0;
   position: absolute;
   top: -1.7em;
@@ -62,4 +61,10 @@
 
 .blogcard__titre {
   font-size: 1.3rem;
+}
+
+.blogcard__estBrouillon {
+  background: #333;
+  color: white;
+  padding: 0.1em 0.4em;
 }

@@ -9,7 +9,15 @@ class CategoriesService {
       }
     })
     return réponse.data.categories
+  }
 
+  static async getOne(idCategorie: string) {
+    const réponse = await axios.get(`/api/categorie/${idCategorie}`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return réponse.data.categorie
   }
 }
 

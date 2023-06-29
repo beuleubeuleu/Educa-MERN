@@ -1,0 +1,35 @@
+.admin-validation__container{
+  width: min(100%, 900px);
+  margin : auto;
+}
+
+.admin-validation__container button {
+  padding : .5em;
+}
+
+.admin-validation__table-container {
+  overflow-x: auto;
+}
+
+.admin-validation__prof-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-validation__prof-table th,
+.admin-validation__prof-table td {
+  padding: .5em;
+  border: .1pt solid white;
+}
+
+.admin-validation__prof-table th {
+  background-color: #333;
+  color: #fff;
+}
+
+.admin-validation__prof-table tbody tr:nth-child(even) {
+  background-color: rgba(171, 171, 171, 0.76);
+}
+.admin-validation__prof-table tbody tr:nth-child(odd) {
+  background-color: rgba(215, 215, 215, 0.62);
+}

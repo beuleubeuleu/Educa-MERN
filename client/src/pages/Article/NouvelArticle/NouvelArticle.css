@@ -1,0 +1,105 @@
+.nouvel-article__form {
+  max-width        : 100%;
+  padding          : 1.3em;
+  background-color : #ffffff;
+  border-radius    : 5px;
+  box-shadow       : 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align       : center;
+  width            : 100%;
+  margin-top       : 4em;
+}
+
+.nouvel-article__form h3 {
+  margin-bottom : 1em;
+  font-size     : 1.5rem;
+}
+
+.nouvel-article__form input[type="text"],
+.nouvel-article__form select,
+.nouvel-article__form textarea {
+  width         : 100%;
+  padding       : 1em;
+  margin-bottom : 1em;
+  border        : 1px solid #ccc;
+  border-radius : 3px;
+}
+
+.nouvel-article__form textarea {
+  width         : 100%;
+  padding       : 1em;
+  margin-bottom : 1em;
+  border        : 1px solid #ccc;
+  border-radius : 3px;
+  resize        : vertical; /* Allow vertical resizing */
+  min-height    : 30ch; /* Set a minimum height for the textarea */
+}
+
+.nouvel-article__form button {
+  background-color : #5d9892;
+  border           : none;
+  border-radius    : 3px;
+  color            : #ffffff;
+  cursor           : pointer;
+  padding          : .8em 1.2em;
+  margin-top       : .3em;
+}
+
+.nouvel-article__form--brouillon {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  gap             : 1em;
+  margin-block    : 1em;
+}
+
+.nouvel-article__form--categorie {
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+  align-items     : center;
+}
+
+.nouvel-article__form .modifier-article__form--supprimer {
+  background-color : #b40000; !important;
+  margin-inline    : 1em;
+}
+
+.modifier-article__form--delete-modal {
+  position         : fixed;
+  top              : 50%;
+  left             : 50%;
+  transform        : translate(-50%, -50%);
+  padding          : 3rem;
+  background-color : #fff;
+  border-radius    : 4px;
+  box-shadow       : 0 2px 8px rgba(0, 0, 0, 0.2);
+  width            : min(100%, 500px);
+}
+
+.modal-container {
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+  align-items     : center;
+  gap             : 1em;
+}
+
+/* Styles spécifiques au mode "responsive" pour une largeur minimale de 900px */
+@media screen and (min-width : 900px) {
+  .nouvel-article__form {
+    max-width  : 900px;
+    margin     : 0 auto;
+    text-align : center;
+  }
+
+  .nouvel-article__form input[type="text"],
+  .nouvel-article__form select {
+    max-width : 400px;
+  }
+
+
+  .nouvel-article__form textarea {
+    width  : 72ch;
+    height : 42ch
+  }
+}

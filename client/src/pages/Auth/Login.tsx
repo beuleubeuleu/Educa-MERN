@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import AuthService                 from "../../services/AuthService";
+import AuthService                 from "../../services/AuthService.ts";
 import { Link }                    from "react-router-dom";
 import { useUserContext }          from "../../context/UserContext.tsx";
 
@@ -57,7 +57,7 @@ export const Login: React.FC = () => {
           </div>
         </form>
         <p>{ errorMsg }</p>
-        <p>Pas encore inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
+        <p>Pas inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
       </div>
   )
 };

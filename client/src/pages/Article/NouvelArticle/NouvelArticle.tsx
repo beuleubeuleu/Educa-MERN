@@ -1,9 +1,12 @@
 import { FormEvent, useRef }   from "react";
-import { useCategorieContext } from "../../context/CategorieContext.tsx";
+import { useCategorieContext } from "../../../context/CategorieContext.tsx";
 import "./NouvelArticle.css"
-import ArticleService          from "../../services/ArticleService.ts";
+import ArticleService          from "../../../services/ArticleService.ts";
+import { useNavigate }         from "react-router-dom";
 
 export const NouvelArticle = () => {
+  const navigate = useNavigate()
+
   const titreRef = useRef<HTMLInputElement>(null);
   const contenuRef = useRef<HTMLTextAreaElement>(null);
   const categorieRef = useRef<HTMLSelectElement>(null);
@@ -23,6 +26,7 @@ export const NouvelArticle = () => {
         estBrouillon: estBrouillonRef.current!.checked,
       }
       await ArticleService.createArticle(nouvelArticle)
+      navigate("/article/mes-articles")
     } catch(error: any){
       console.log(error)
     }

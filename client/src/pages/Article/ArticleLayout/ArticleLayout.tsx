@@ -15,7 +15,6 @@ export const ArticleLayout = () => {
     getData()
   }, []);
 
-  console.log(data?.contenu)
 
 
   return (

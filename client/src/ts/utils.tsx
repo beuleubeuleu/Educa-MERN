@@ -10,6 +10,13 @@ export function formatDate(date: Date) {
   return new Date(date).toLocaleDateString("fr-EU");
 }
 
+export function formatDateWithWords(date: Date) {
+  const jourSemaine = new Intl.DateTimeFormat("fr-EU", {weekday:"long"}).format(date)
+  const jourMois = date.getDate()
+  const mois = new Intl.DateTimeFormat("fr-EU", {month:"long"}).format(date)
+  return `${jourSemaine} ${jourMois} ${mois}`
+}
+
 export const getObjectFromSessionStorage = (key: string) => {
   const storedItem = sessionStorage.getItem(key);
 
