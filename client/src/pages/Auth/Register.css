@@ -51,8 +51,9 @@
 }
 
 .register-form p span a {
-  color: #5d9892;
+  color: #30695e;
   text-decoration: none;
+  font-size : 1.1rem;
 }
 
 /* Styles spécifiques au mode "responsive" pour une largeur minimale de 900px */

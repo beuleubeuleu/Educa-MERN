@@ -35,6 +35,12 @@
   margin-top : .3em;
 }
 
+.container p span a {
+  color: #30695e;
+  text-decoration: none;
+  font-size : 1.1rem;
+}
+
 /* Styles spécifiques au mode "responsive" pour une largeur minimale de 900px */
 @media screen and (min-width: 900px) {
   .container {

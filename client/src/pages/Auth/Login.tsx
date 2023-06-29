@@ -57,7 +57,7 @@ export const Login: React.FC = () => {
           </div>
         </form>
         <p>{ errorMsg }</p>
-        <p>Pas encore inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
+        <p>Pas inscrit ? <span><Link to="/inscription">Inscrivez-vous!</Link></span></p>
       </div>
   )
 };

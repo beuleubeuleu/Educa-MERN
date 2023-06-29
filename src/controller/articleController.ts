@@ -197,7 +197,7 @@ export const updateArticle = async (req: Request, res: Response) => {
     if ( !article ) {
       return res.status(500).json({
         success: false,
-        message: "La création de l'article à échoué"
+        message: "La mise à jour de l'article à échoué"
       });
     }
     res.status(201).json({

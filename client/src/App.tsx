@@ -17,6 +17,8 @@ import { ArticleParCategorie } from "./pages/Article/ArticleParCategorie/Article
 import { ArticleParAuteur } from "./pages/Article/ArticleParAuteur/ArticleParAuteur.tsx";
 import { MesArticles } from "./pages/Article/MesArticles/MesArticles.tsx";
 import { ModifierArticle } from "./pages/Article/ModifierArticle/ModifierArticle.tsx";
+import { DashBoard } from "./pages/Admin/DashBoard/DashBoard.tsx";
+import { ValidationProf } from "./pages/Admin/Validation-Prof/ValidationProf.tsx";
 
 
 function App() {
@@ -56,8 +58,8 @@ function App() {
                   //routes de user Admin------------------------
                   <Route element={ <AdminRoutes/> }>
                     <Route path="/admin/" element={ <></> }/>
-                    <Route path="/admin/validation-professeur" element={ <></> }/>
-                    <Route path="/admin/dashboard" element={ <></> }/>
+                    <Route path="/admin/validation-professeur" element={ <ValidationProf/> }/>
+                    <Route path="/admin/dashboard" element={ <DashBoard/> }/>
                   </Route>
 
                 </Route>
