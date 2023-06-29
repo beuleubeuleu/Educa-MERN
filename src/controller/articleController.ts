@@ -53,7 +53,21 @@ export const createArticle = async (req: Request, res: Response) => {
 }
 
 export const deleteArticle = async (req: Request, res: Response) => {
-  //TODO: coder la fonction
+  try {
+    const article = await Article.findById(req.params.idArticle);
+    if (req.user._id.toString() != article.auteur.toString()) {
+      return res.status(403).json({ message: "Interdit de supprimer les articles que vous n'avez pas créé"});
+    }
+
+    const deletedArticle = await Article.findByIdAndDelete(req.params.idArticle);
+    if ( !deletedArticle ) {
+      return res.status(404).json({ message: "Article introuvable" });
+    }
+    res.status(200).json({ message: "Article supprimé avec succès" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "la suppression a echoué" });
+  }
 }
 
 export const getAllArticles = async (req: Request, res: Response) => {
@@ -140,6 +154,9 @@ export const updateArticle = async (req: Request, res: Response) => {
   try {
 
     const article = await Article.findById(req.params.idArticle);
+    if (req.user._id.toString() != article.auteur._id.toString()) {
+      return res.status(403).json({ message: "Interdit de modifier les articles que vous n'avez pas créé"});
+    }
 
     if ( !article ) {
       return res.status(404).json({ message: "Article non trouvé" });

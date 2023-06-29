@@ -14,7 +14,7 @@ articleRouter.get("/:idArticle", estConnecté, getOneArticle);
 articleRouter.get("/categorie/:idCategorie", estConnecté, getAllArticleByCategorie);
 articleRouter.get("/auteur/mes-articles", estProfesseur, getMesArticles);
 articleRouter.get("/auteur/:idAuteur", estConnecté, getAllArticleByAuthor);
-articleRouter.delete("/delete/:idArticle", estProfesseur, deleteArticle);
 articleRouter.put("/update/:idArticle", estProfesseur, upload.single("image"), updateArticle);
+articleRouter.delete("/delete/:idArticle", estProfesseur, deleteArticle);
 
 export default articleRouter;

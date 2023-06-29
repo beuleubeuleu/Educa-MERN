@@ -81,10 +81,19 @@ class ArticleService {
           Authorization: "Bearer " + getObjectFromSessionStorage("token")
         }
       })
-      return response.data
+      return response.data.article
     } catch (error: any) {
       console.log(error)
     }
+  }
+
+  static async deleteArticle(idArticle: string) {
+    const response = await axios.delete(`/api/article/delete/${idArticle}`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data
   }
 
 }

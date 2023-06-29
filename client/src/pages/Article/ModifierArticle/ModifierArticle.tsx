@@ -4,8 +4,10 @@ import ArticleService                             from "../../../services/Articl
 import { useNavigate, useParams }                 from "react-router-dom";
 import { articleType }                            from "../../../types/articleType.ts";
 import { Loader }                                 from "../../../components/Loader/Loader.tsx";
+import { useUserContext }                         from "../../../context/UserContext.tsx";
 
 export const ModifierArticle = () => {
+  const {user} = useUserContext()
 
   const [data, setData] = useState<articleType>();
   const { idArticle } = useParams()
@@ -25,12 +27,10 @@ export const ModifierArticle = () => {
     }
   };
 
-  const handleConfirmDelete = () => {
-    // Perform the deletion logic
-    // ...
-
-    // Hide the delete dialog
+  const handleConfirmDelete = async(id: string) => {
+    await ArticleService.deleteArticle(id)
     handleCloseDialog();
+    navigate("/article/mes-articles")
   };
 
 
@@ -48,8 +48,9 @@ export const ModifierArticle = () => {
 
   if (!idArticle) return null
   if(!data) return <Loader/>
-
-  console.log(data)
+  if(user?._id != data.auteur._id) {
+    return <div>Vous ne pouvez pas modifier les articles de vos confrères</div>
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -112,7 +113,7 @@ export const ModifierArticle = () => {
                impossible.</p>
             <div>
               <button onClick={ handleCloseDialog }>Annuler</button>
-              <button className="modifier-article__form--supprimer" onClick={ handleConfirmDelete }>Supprimer</button>
+              <button className="modifier-article__form--supprimer" onClick={ ()=>handleConfirmDelete(data._id) }>Supprimer</button>
             </div>
           </div>
         </dialog>
