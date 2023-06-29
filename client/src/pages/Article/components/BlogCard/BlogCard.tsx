@@ -2,6 +2,7 @@ import { formatDate }  from "../../../../ts/utils.tsx";
 import { articleType } from "../../../../types/articleType.ts";
 import "./BlogCard.css"
 import { Link }        from "react-router-dom";
+import { ImageWithLoader } from "../../../../components/ImageWithLoader.tsx";
 
 type BlogCardProps = {
   article:articleType
@@ -15,7 +16,7 @@ export const BlogCard = ({article}: BlogCardProps) => {
   return (
       <li className="blogcard__container">
         <Link to={ url }>
-          <img src={ `/${imagePath}` } alt={ imageAlt } width="600" height="400"/>
+          <ImageWithLoader imagePath={ `/${imagePath}` } imageAlt={ imageAlt } width="600" height="400"/>
         </Link>
         <Link className="blogcard__categorie" to={ `/article/categorie/${ categorie._id }` }>{ categorie.titre }</Link>
         <div className="blogcard__texte">

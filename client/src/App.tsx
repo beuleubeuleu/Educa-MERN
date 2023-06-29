@@ -12,8 +12,9 @@ import { ProfRoutes }                           from "./components/Routes/ProfRo
 import { AdminRoutes }                          from "./components/Routes/AdminRoutes.tsx";
 import { NouvelArticle }                        from "./pages/NouvelArticle/NouvelArticle.tsx";
 import { ArticleLayout }                        from "./pages/Article/ArticleLayout/ArticleLayout.tsx";
-import { TousLesArticles }                      from "./pages/Article/TousLesArticles/TousLesArticles.tsx";
-import { ArticleParCategorie }                  from "./pages/ArticleParCategorie/ArticleParCategorie.tsx";
+import { TousLesArticles }     from "./pages/Article/TousLesArticles/TousLesArticles.tsx";
+import { ArticleParCategorie } from "./pages/Article/ArticleParCategorie/ArticleParCategorie.tsx";
+import { ArticleParAuteur } from "./pages/Article/ArticleParAuteur/ArticleParAuteur.tsx";
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
                     <Route path="/article/:idArticle" element={ <ArticleLayout/> }/>
                     <Route path="/categorie" element={ <CategorieList/> }/>
                     <Route path="/article/categorie/:idCategorie" element={ <ArticleParCategorie/> }/>
-                    <Route path="/article/auteur/:idAuteur" element={ <h2>un auteur</h2> }/>
+                    <Route path="/article/auteur/:idAuteur" element={ <ArticleParAuteur/> }/>
                   </Route>
 
                   //routes de user Professeur-----------------------

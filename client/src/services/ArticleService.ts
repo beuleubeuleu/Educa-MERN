@@ -50,6 +50,14 @@ class ArticleService {
     return response.data.articles
   }
 
+  static async getAllByAuthor(idAuteur: string) {
+    const response = await axios.get(`/api/article/auteur/${idAuteur}`, {
+      headers: {
+        Authorization: "Bearer " + getObjectFromSessionStorage("token")
+      }
+    })
+    return response.data.articles
+  }
 }
 
 export default ArticleService
